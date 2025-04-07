@@ -1,0 +1,33 @@
+/* ...existing code... */
+
+/* Styles pour le bandeau d'installation */
+#install-banner {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+#install-banner button {
+  background-color: white;
+  color: #3498db;
+  border: none;
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style différent pour l'app en mode installé */
+body.installed-pwa {
+  background-color: #e8f4f8; /* Couleur plus claire quand installée */
+}
+
+/* ...existing code... */

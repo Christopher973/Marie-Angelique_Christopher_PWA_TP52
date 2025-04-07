@@ -1,0 +1,13 @@
+{
+  "name": "temperature-converter-pwa",
+  "version": "1.0.0",
+  "description": "Application de conversion de températures en PWA",
+  "scripts": {
+    "build-sw": "workbox injectManifest workbox-config.js",
+    "start": "http-server -p 8080"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "workbox-cli": "^7.0.0"
+  }
+}

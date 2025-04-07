@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- ...existing code... -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#3498db" />
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
+    <!-- ...existing code... -->
+  </head>
+  <body>
+    <!-- ...existing code... -->
+
+    <!-- Bandeau d'installation -->
+    <div id="install-banner" style="display: none">
+      <p>Installez cette application sur votre appareil!</p>
+      <button id="install-button">Installer</button>
+      <button id="close-banner">Plus tard</button>
+    </div>
+
+    <!-- ...existing code... -->
+
+    <script src="main.js"></script>
+    <script>
+      // Enregistrement du service worker avec Workbox
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log(
+                "Service Worker enregistré avec succès:",
+                registration.scope
+              );
+            })
+            .catch((error) => {
+              console.error(
+                "Erreur lors de l'enregistrement du Service Worker:",
+                error
+              );
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
