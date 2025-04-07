@@ -2,9 +2,9 @@ module.exports = {
   globDirectory: "./", // Répertoire racine du projet
   globPatterns: [
     // Modèles de fichiers à mettre en cache
-    "**/*.{html,css,js,json,png,jpg,jpeg,svg,ico}",
+    "**/*.{html,css,js,json}",
     "manifest.json",
-    "assets/**/*",
+    "icons/*.png",
   ],
   swDest: "./sw.js", // Destination du service worker généré
   swSrc: "./sw-template.js", // Template source du service worker

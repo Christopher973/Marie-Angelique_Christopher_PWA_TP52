@@ -11,7 +11,7 @@ workbox.setConfig({
 // Utilisation des modules Workbox
 const { precacheAndRoute, cleanupOutdatedCaches } = workbox.precaching;
 const { registerRoute } = workbox.routing;
-const { StaleWhileRevalidate, CacheFirst, NetworkFirst } = workbox.strategies;
+const { StaleWhileRevalidate, CacheFirst } = workbox.strategies;
 const { CacheableResponsePlugin } = workbox.cacheableResponse;
 const { ExpirationPlugin } = workbox.expiration;
 
@@ -45,25 +45,11 @@ registerRoute(
 );
 
 // Stratégie StaleWhileRevalidate pour le reste (HTML, JS)
-// Cette stratégie répond avec le cache puis met à jour en arrière-plan
 registerRoute(
   ({ request }) =>
     request.destination === "document" || request.destination === "script",
   new StaleWhileRevalidate({
     cacheName: CACHE_NAME + "-html-js",
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200],
-      }),
-    ],
-  })
-);
-
-// Stratégie NetworkFirst pour les API (au cas où vous en utiliseriez dans le futur)
-registerRoute(
-  ({ url }) => url.pathname.startsWith("/api/"),
-  new NetworkFirst({
-    cacheName: CACHE_NAME + "-api",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],

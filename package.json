@@ -4,7 +4,8 @@
   "description": "Application de conversion de températures en PWA",
   "scripts": {
     "build-sw": "workbox injectManifest workbox-config.js",
-    "start": "http-server -p 8080"
+    "start": "http-server -p 8080 -c-1",
+    "build": "npm run build-sw && npm start"
   },
   "devDependencies": {
     "http-server": "^14.1.1",

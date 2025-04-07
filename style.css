@@ -1,4 +1,79 @@
-/* ...existing code... */
+/* Styles généraux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Couleur différente lorsque l'application est installée */
+body.installed-pwa {
+  background-color: #e8f4f8;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #3498db;
+  margin-bottom: 20px;
+}
+
+/* Styles pour les formulaires */
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border-left: 5px solid #3498db;
+}
 
 /* Styles pour le bandeau d'installation */
 #install-banner {
@@ -25,9 +100,15 @@
   cursor: pointer;
 }
 
-/* Style différent pour l'app en mode installé */
-body.installed-pwa {
-  background-color: #e8f4f8; /* Couleur plus claire quand installée */
+/* Style pour la page offline */
+.offline-container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* ...existing code... */
+.offline-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+}

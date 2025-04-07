@@ -1,3 +1,109 @@
+// Fonctions de conversion de température
+function celsiusToFahrenheit(celsius) {
+  return (celsius * 9) / 5 + 32;
+}
+
+function celsiusToKelvin(celsius) {
+  return celsius + 273.15;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9;
+}
+
+function fahrenheitToKelvin(fahrenheit) {
+  return ((fahrenheit - 32) * 5) / 9 + 273.15;
+}
+
+function kelvinToCelsius(kelvin) {
+  return kelvin - 273.15;
+}
+
+function kelvinToFahrenheit(kelvin) {
+  return ((kelvin - 273.15) * 9) / 5 + 32;
+}
+
+// Fonction de conversion principale
+function convertTemperature() {
+  const fromUnit = document.getElementById("fromUnit").value;
+  const toUnit = document.getElementById("toUnit").value;
+  const inputValue = parseFloat(document.getElementById("temperature").value);
+  const resultElement = document.getElementById("result");
+
+  if (isNaN(inputValue)) {
+    resultElement.textContent = "Veuillez entrer une valeur numérique valide.";
+    return;
+  }
+
+  let result;
+  let fromSymbol, toSymbol;
+
+  // Définir les symboles pour les unités
+  switch (fromUnit) {
+    case "celsius":
+      fromSymbol = "°C";
+      break;
+    case "fahrenheit":
+      fromSymbol = "°F";
+      break;
+    case "kelvin":
+      fromSymbol = "K";
+      break;
+  }
+
+  switch (toUnit) {
+    case "celsius":
+      toSymbol = "°C";
+      break;
+    case "fahrenheit":
+      toSymbol = "°F";
+      break;
+    case "kelvin":
+      toSymbol = "K";
+      break;
+  }
+
+  // Si les unités sont identiques, pas besoin de conversion
+  if (fromUnit === toUnit) {
+    result = inputValue;
+  } else {
+    // Effectuer la conversion appropriée
+    switch (fromUnit) {
+      case "celsius":
+        result =
+          toUnit === "fahrenheit"
+            ? celsiusToFahrenheit(inputValue)
+            : celsiusToKelvin(inputValue);
+        break;
+      case "fahrenheit":
+        result =
+          toUnit === "celsius"
+            ? fahrenheitToCelsius(inputValue)
+            : fahrenheitToKelvin(inputValue);
+        break;
+      case "kelvin":
+        result =
+          toUnit === "celsius"
+            ? kelvinToCelsius(inputValue)
+            : kelvinToFahrenheit(inputValue);
+        break;
+    }
+  }
+
+  // Afficher le résultat arrondi à 2 décimales
+  resultElement.textContent = `${inputValue} ${fromSymbol} = ${result.toFixed(
+    2
+  )} ${toSymbol}`;
+}
+
+// Event listener pour le bouton de conversion
+document.addEventListener("DOMContentLoaded", function () {
+  const convertButton = document.getElementById("convertBtn");
+  if (convertButton) {
+    convertButton.addEventListener("click", convertTemperature);
+  }
+});
+
 // Variables pour l'installation de la PWA
 let deferredPrompt;
 const installBanner = document.getElementById("install-banner");
